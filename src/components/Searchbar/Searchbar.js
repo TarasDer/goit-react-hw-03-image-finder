@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import css from 'components/Searchbar/Searchbar.module.css';
 import { ReactComponent as SearchIcon } from 'components/icons/8666693_search_icon.svg';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
+import css from 'components/Searchbar/Searchbar.module.css';
 
 export default class Searchbar extends Component {
   state = { inputValue: '' };
@@ -19,7 +20,7 @@ export default class Searchbar extends Component {
       return;
     }
     this.props.handleFormSubmit(this.state.inputValue);
-    // this.setState({ inputValue: '' });
+    this.setState({ inputValue: '' });
   };
   render() {
     return (
@@ -43,3 +44,7 @@ export default class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = {
+  handleFormSubmit: PropTypes.func.isRequired,
+};
